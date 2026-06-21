@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { Application, Request, Response } from "express";
 import config from "./config";
+import { authRoutes } from "./modules/auth/auth.routes";
 import { userRoutes } from "./modules/user/user.route";
 
 
@@ -15,7 +16,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
-app.use(cookieParser())
+app.use(cookieParser());
 
 
 app.get("/",(req : Request, res : Response) => {
@@ -25,5 +26,6 @@ app.get("/",(req : Request, res : Response) => {
 // app.post()
 
 app.use("/api/users", userRoutes)
+app.use("/api/auth", authRoutes)
 
 export default app;
