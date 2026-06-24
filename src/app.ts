@@ -3,6 +3,8 @@ import cors from "cors";
 import express, { Application, Request, Response } from "express";
 import config from "./config";
 import { authRoutes } from "./modules/auth/auth.routes";
+import { commentRoutes } from "./modules/comment/comment.route";
+import { postRoutes } from "./modules/post/post.route";
 import { userRoutes } from "./modules/user/user.route";
 
 
@@ -27,5 +29,7 @@ app.get("/",(req : Request, res : Response) => {
 
 app.use("/api/users", userRoutes)
 app.use("/api/auth", authRoutes)
+app.use("/api/posts", postRoutes)
+app.use("/api/comments", commentRoutes)
 
 export default app;
