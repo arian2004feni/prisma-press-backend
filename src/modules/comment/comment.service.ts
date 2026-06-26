@@ -12,7 +12,10 @@ const createComment = async (authorId: string, payload: ICreateCommentPayload) =
         data: {
             ...payload,
             authorId
-        }
+        },
+        // include:{
+        //     post : true
+        // }
     })
 
     return comment
@@ -55,7 +58,7 @@ const getCommentByCommentId = async (commentId : string) => {
 }
 
 const updateComment = async (commentId: string, data: IUpdateCommentPayload, authorId: string) => {
-    const commentData = await prisma.comment.findFirst({
+    const commentData = await prisma.comment.findUniqueOrThrow({
         where: {
             id: commentId,
             authorId
@@ -65,9 +68,9 @@ const updateComment = async (commentId: string, data: IUpdateCommentPayload, aut
         }
     })
 
-    if (!commentData) {
-        throw new Error("Your provided input is invalid!")
-    }
+    // if (!commentData) {
+    //     throw new Error("Your provided input is invalid!")
+    // }
 
     const comment =await prisma.comment.update({
         where: {
@@ -81,7 +84,7 @@ const updateComment = async (commentId: string, data: IUpdateCommentPayload, aut
 }
 
 const deleteComment = async (commentId: string, authorId: string) => {
-    const commentData = await prisma.comment.findFirst({
+    const commentData = await prisma.comment.findUniqueOrThrow({
         where: {
             id: commentId,
             authorId
@@ -91,9 +94,9 @@ const deleteComment = async (commentId: string, authorId: string) => {
         }
     })
 
-    if (!commentData) {
-        throw new Error("Your provided input is invalid!")
-    }
+    // if (!commentData) {
+    //     throw new Error("Your provided input is invalid!")
+    // }
 
     const comment = await prisma.comment.delete({
         where: {
