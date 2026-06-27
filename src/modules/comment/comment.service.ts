@@ -39,19 +39,10 @@ const getCommentByAuthorId = async (authorId: string) => {
     return comments
 }
 
-const getCommentByCommentId = async (commentId : string) => {
-    const comment = await prisma.comment.findUnique({
+const getCommentByCommentId = async (postId : string) => {
+    const comment = await prisma.comment.findMany({
         where: {
-            id: commentId
-        },
-        include: {
-            post: {
-                select: {
-                    id: true,
-                    title: true,
-                    views: true
-                }
-            }
+            postId
         }
     })
     return comment

@@ -20,7 +20,7 @@ export const globalErrorHandler = (err: any, req: Request, res: Response, next: 
         }else if(err.code === "P2003"){
             statusCode = httpStatus.BAD_REQUEST,
             errorMessage = "Foreign key constraint failed"
-        }else if(err.code === "2025"){
+        }else if(err.code === "P2025"){
             statusCode = httpStatus.BAD_REQUEST,
                 errorMessage = "An operation failed because it depends on one or more records that were required but not found."
         }
