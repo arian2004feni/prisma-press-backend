@@ -116,7 +116,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\" : \"abc7@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "raw": "{\r\n    \"email\" : \"abc6@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -176,7 +176,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"title\": \"My Third Post\",\r\n  \"content\": \"Content of the post goes here.\",\r\n  \"thumbnail\": \"https://example.com/thumbnail.jpg\",\r\n  \"isFeatured\": false,\r\n  \"status\": \"PUBLISHED\",\r\n  \"tags\": [\"typescript\", \"prisma\", \"express\"]\r\n}",
+              "raw": "{\r\n  \"title\": \"My Second Premium Post\",\r\n  \"content\": \"Content of the post goes here.\",\r\n  \"thumbnail\": \"https://example.com/thumbnail.jpg\",\r\n  \"isFeatured\": false,\r\n  \"isPremium\" : true,\r\n  \"status\": \"PUBLISHED\",\r\n  \"tags\": [\"typescript\", \"prisma\", \"express\"]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -220,6 +220,53 @@
               "path": [
                 "api",
                 "posts"
+              ],
+              "query": [
+                {
+                  "key": "title",
+                  "value": "Christiano Ronaldo",
+                  "disabled": true
+                },
+                {
+                  "key": "content",
+                  "value": "Ronaldo",
+                  "disabled": true
+                },
+                {
+                  "key": "searchTerm",
+                  "value": "Ron",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "3",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "sortBy",
+                  "value": "createdAt",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "asc",
+                  "description": "asc / desc",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "tags",
+                  "value": "[\"typescript\"]",
+                  "disabled": true
+                }
               ]
             }
           },
@@ -238,7 +285,7 @@
               "raw": "{\r\n  \"title\": \"My First Post\",\r\n  \"content\": \"Content of the post goes here.\",\r\n  \"thumbnail\": \"https://example.com/thumbnail.jpg\",\r\n  \"isFeatured\": false,\r\n  \"status\": \"PUBLISHED\",\r\n  \"tags\": [\"typescript\", \"prisma\", \"express\"]\r\n}"
             },
             "url": {
-              "raw": "http://localhost:5000/api/posts/fb90270e-b233-41fa-97e6-32f8870d3d1d",
+              "raw": "http://localhost:5000/api/posts/03703987-bf1b-4d2b-8916-b28949314c26",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -247,7 +294,7 @@
               "path": [
                 "api",
                 "posts",
-                "fb90270e-b233-41fa-97e6-32f8870d3d1d"
+                "03703987-bf1b-4d2b-8916-b28949314c26"
               ]
             }
           },
@@ -355,6 +402,123 @@
                 "api",
                 "posts",
                 "stats"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "Create Comment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"postId\" : \"42ab9256-4d44-40f7-91ad-01688283e3ec\",\r\n  \"authorId\" : \"e6ee5b42-315d-49bf-a775-f5c1d193849e\",\r\n  \"content\" : \"My Third Comment\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Subscription",
+      "item": [
+        {
+          "name": "Get Subscription Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/subscription/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "subscription",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Checkout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Random\",\r\n    \"email\" : \"abc8@gmail.com\",\r\n    \"password\" : \"123456\",\r\n    \"profilePhoto\" : \"www.google.com\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/subscription/checkout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "subscription",
+                "checkout"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Premium Posts",
+      "item": [
+        {
+          "name": "Get Premium Posts",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"My First Post\",\r\n  \"content\": \"Content of the post goes here.\",\r\n  \"thumbnail\": \"https://example.com/thumbnail.jpg\",\r\n  \"isFeatured\": false,\r\n  \"status\": \"PUBLISHED\",\r\n  \"tags\": [\"typescript\", \"prisma\", \"express\"]\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/premium",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "premium"
               ]
             }
           },
